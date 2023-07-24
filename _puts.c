@@ -19,9 +19,6 @@ int _puts(char *str)
 		}
 		_putchar('\0');
 	}
-	else
-	{
-		fprintf(stderr, "Error, string printing");
-	}
+
 	return (i);
 }

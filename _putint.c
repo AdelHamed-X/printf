@@ -1,24 +1,43 @@
 #include "main.h"
-
+/**
+ * printf_int - prints integer
+ * @args: argument to print
+ * Return: number of characters printed
+ */
 int _putint(int n)
 {
-	int printed = 0;
+	int num, last = n % 10, digit, exp = 1;
+	int  i = 1;
 
-	if (n >= INT_MIN || n <= INT_MAX)
+	n = n / 10;
+	num = n;
+
+	if (last < 0)
 	{
-		if (n < 0) {
 		_putchar('-');
-        	printed++;
-        	n = -n;
-    		}
-    		if (n >= 10) {
-        	printed += _putint(n / 10);
-    		}
-    		_putchar('0' + n % 10);
+		num = -num;
+		n = -n;
+		last = -last;
+		i++;
 	}
-	else
+	if (num > 0)
 	{
-		perror("Error, Number Printing");
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
 	}
-	return printed;
+	_putchar(last + '0');
+
+	return (i);
 }

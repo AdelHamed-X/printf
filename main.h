@@ -1,6 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+	#if (SOME_CONDITION)
+    		#error "Some condition is not met. Fix the code before compiling."
+	#endif
+
 #include <stdbool.h>
 #include <limits.h>
 #include <stdarg.h>
