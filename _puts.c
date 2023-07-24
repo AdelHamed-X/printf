@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdlib.h>
+
 /**
  * _puts - Prints a string to the standard output.
  * @str: Pointer to the string to be printed.
@@ -9,15 +11,34 @@
  */
 int _puts(char *str)
 {
-	int i;
-	
-	if (str)
-	{	
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			_putchar(str[i]);
-		}
-	}
+    char buffer[1024];
+    int i, j;
 
-	return (i);
+    if (str)
+    {
+        for (i = 0, j = 0; str[i] != '\0'; i++)
+        {
+            buffer[j++] = str[i];
+            if (j == sizeof(buffer))
+            {
+                _flush_buffer(buffer, sizeof(buffer));
+                j = 0;
+            }
+        }
+        if (j > 0)
+        {
+            _flush_buffer(buffer, j);
+        }
+    }
+
+    return i;
+}
+
+void _flush_buffer(char *buffer, size_t size)
+{
+    size_t i;
+    for (i = 0; i < size; i++)
+    {
+        _putchar(buffer[i]);
+    }
 }
