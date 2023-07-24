@@ -1,57 +1,60 @@
-#include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
+
 /**
- * _printf - Custom printf function for formatted output.
- * @format: Format string with supported specifiers.
- *
- * Description:
- * This function prints formatted output to the standard output.
- * Supported specifiers: %c, %s, %d/%i, %u, %x, %X, %%.
- *
- * Return: Number of characters printed (success), -1 on error.
- *
- * Note: Simplified version for educational purposes.
+ * _printf - prints anything
+ * @format: the string to be formatted
+ * Return: (printed) the numeber of printed characters
  */
 int _printf(const char *format, ...)
-{	va_list args;
-	int count = 0, sh = 0;
-	int ind = 0;
+{
+	int i = 0;
+	int specifier_count = 0;
+	int printed =  0;
+	va_list list;
+	int va_arg1;
+	char *va_arg2;
+	int va_arg3;
 
-	va_start(args, format);
-	while (format[ind])
+	va_start(list, format);
+	while (format[i])
 	{
-		if (format[ind] == '%')
-		{	ind++;
-			if (format[ind] == '%')
-			{	_putchar(format[ind]);
-				count++;
-				ind++;
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+			printed++;
+		
+		}
+		else if (format[i] == '%')
+		{
+			i++;
+			specifier_count++;
+			switch (format[i])
+			{
+				case 'c':
+					va_arg1 = va_arg(list, int);
+					_putchar(va_arg1);
+					printed++;
+					break;
+				case 's':
+					va_arg2 = va_arg(list, char *);
+					_puts(va_arg2);
+					printed++;
+					break;
+				case '%':
+					_putchar(format[i]);
+					printed++;
+					break;
+				case 'i':
+				case 'd':
+					va_arg3 = va_arg(list, int);
+					_putint(va_arg3);
+					printed++;
+					break;
 			}
-			else if (format[ind] == 'c')
-			{	char c = va_arg(args, int);
-				_putchar(c);
-				ind++;
-				count++; }
-			else if (format[ind] == 's')
-			{	char *str = va_arg(args, char *);
-				_puts(str);
-				ind++;
-				while (*str)
-				{	count++;
-					str++;
-				}}
-			else if (format[ind] == 'd' || format[ind] == 'i')
-			{	int value = va_arg(args, int);
+		}
+		i++;
+	}
+	va_end(list);
 
-				sh = print_int(value);
-				ind++;
-				count += sh; }}
-		else
-		{	_putchar(format[ind]);
-			ind++;
-			count++;
-		}}
-		va_end(args);
-	return (count);
+	return (printed);
 }
