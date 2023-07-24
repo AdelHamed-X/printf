@@ -44,7 +44,9 @@ int _printf(const char *format, ...)
 					va_arg2 = va_arg(list, char *);
 					if (va_arg2) {
 						_puts(va_arg2);
-						printed++;
+						while (str) {
+							printed++;
+						}
 					} else {
 						perror("Error");
 					}
