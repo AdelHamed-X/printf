@@ -7,13 +7,18 @@
  * This function prints the characters of the given string to
  * the standard output until it reaches the null-terminator.
  */
-void _puts(char *str)
+int _puts(char *str)
 {
 	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
+	
+	if (str)
+	{	
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			_putchar(str[i]);
+		}
+		_putchar('\0');
 	}
-	_putchar('\0');
+
+	return (i);
 }
