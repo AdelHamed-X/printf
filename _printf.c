@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
-			{	_putchar(format[ind]);
+			{	_putchar(37);
 				count++;
 				ind++;	}
 			else if (format[ind] == 'c')
@@ -35,8 +35,7 @@ int _printf(const char *format, ...)
 				count++; }
 			else if (format[ind] == 's')
 			{	count += _puts(va_arg(args, char *));
-				ind++;
-			}
+				ind++; }
 			else if (format[ind] == 'd' || format[ind] == 'i')
 			{	count += _putint(va_arg(args, int));
 				ind++; }}
