@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 				ind++;
 			}
 			else if (format[ind] == 'd' || format[ind] == 'i')
-			{	count += putint(va_arg(args, int));
+			{	count += _putint(va_arg(args, int));
 				ind++; }}
 		else
 		{	_putchar(format[ind]);
