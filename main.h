@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <string.h>
 
+int _strlen(char *s);
 void _flush_buffer(char *buffer, size_t size);
 int _putchar(char);
 int _puts(char *);
