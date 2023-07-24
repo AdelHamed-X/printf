@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <string.h>
 
-
+void _flush_buffer(char *buffer, size_t size);
 int _putchar(char);
 int _puts(char *);
 int _printf(const char *format, ...);
