@@ -14,8 +14,13 @@ int _printf(const char *format, ...)
 	int va_arg1;
 	char *va_arg2;
 	int va_arg3;
+	bool valid_int;
 
 	va_start(list, format);
+	while (!format) {
+		perror("Error: String pointer points to NULL \n");
+		return (-1);
+	}
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -37,8 +42,12 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					va_arg2 = va_arg(list, char *);
-					_puts(va_arg2);
-					printed++;
+					if (va_arg2) {
+						_puts(va_arg2);
+						printed++;
+					} else {
+						perror("Error");
+					}
 					break;
 				case '%':
 					_putchar(format[i]);
@@ -47,8 +56,13 @@ int _printf(const char *format, ...)
 				case 'i':
 				case 'd':
 					va_arg3 = va_arg(list, int);
-					_putint(va_arg3);
-					printed++;
+					valid_int = (va_arg3 >= INT_MIN || va_arg3 <= INT_MAX);
+					if (valid_int) {
+						_putint(va_arg3);
+						printed++;
+					} else {
+						perror("Error, Invalid Int type");
+					}
 					break;
 			}
 		}
