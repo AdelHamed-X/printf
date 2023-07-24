@@ -1,5 +1,8 @@
 #include "main.h"
 #include <unistd.h>
+
+#define BUFFER_SIZE 1024
+
 /**
  * _putchar - Writes a character to the standard output (stdout).
  * @c: The character to be written.
@@ -9,5 +12,16 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+    static char buffer[BUFFER_SIZE];
+    static int pos = 0;
+
+    if (pos == BUFFER_SIZE)
+    {
+        write(STDOUT_FILENO, buffer, BUFFER_SIZE);
+        pos = 0;
+    }
+
+    buffer[pos++] = c;
+
+    return 1;
 }
