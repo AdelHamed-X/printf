@@ -17,7 +17,6 @@ int _puts(char *str)
 		{
 			_putchar(str[i]);
 		}
-		_putchar('\0');
 	}
 
 	return (i);
