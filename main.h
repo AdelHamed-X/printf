@@ -9,6 +9,6 @@
 int _putchar(char);
 int _puts(char *);
 int _printf(const char *format, ...);
-int print_int(int value);
+int putint(int value);
 
 #endif
