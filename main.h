@@ -1,18 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-	#if (SOME_CONDITION)
-    		#error "Some condition is not met. Fix the code before compiling."
-	#endif
-
-#include <stdbool.h>
-#include <limits.h>
-#include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stddef.h>
+#include <string.h>
+
 
 int _putchar(char);
-int _putint(int);
 int _puts(char *);
 int _printf(const char *format, ...);
+int _putint(int value);
 
 #endif

@@ -1,48 +1,49 @@
+#include <stdarg.h>
+#include <stdio.h>
 #include "main.h"
-
 /**
- * _printf - prints anything
- * @format: the string to be formatted
- * Return: (printed) the numeber of printed characters
+ * _printf - Custom printf function for formatted output.
+ * @format: Format string with supported specifiers.
+ *
+ * Description:
+ * This function prints formatted output to the standard output.
+ * Supported specifiers: %c, %s, %d/%i, %u, %x, %X, %%.
+ *
+ * Return: Number of characters printed (success), -1 on error.
+ *
+ * Note: Simplified version for educational purposes.
  */
 int _printf(const char *format, ...)
-{
-	int i = 0, printed = 0, va_arg3;
-	va_list list;
-	char *va_arg2;
+{	va_list args;
+	int count = 0;
+	int ind = 0;
 
-	va_start(list, format);
-	while (!format)
-	{	perror("Error: String pointer points to NULL \n");
-		return (-1);
-	} while (format[i])
+	if (format == NULL)
+	return (-1);
+	va_start(args, format);
+	while (format[ind])
 	{
-		if (format[i] != '%')
-		{	_putchar(format[i]);
-			printed++;
-		} else if (format[i] == '%')
-		{	i++;
-			switch (format[i])
-			{
-				case 'c':
-					_putchar((va_arg(list, int)));
-					printed++;
-					break;
-				case 's':
-					va_arg2 = va_arg(list, char *);
-					printed += _puts(va_arg2);
-					break;
-				case '%':
-					_putchar(format[i]);
-					printed++;
-					break;
-				case 'i':
-				case 'd':
-					va_arg3 = va_arg(list, int);
-					printed += _putint(va_arg3);
-					break;
+		if (format[ind] == '%')
+		{	ind++;
+			if (format[ind] == '%')
+			{	_putchar(format[ind]);
+				count++;
+				ind++;	}
+			else if (format[ind] == 'c')
+			{	_putchar((va_arg(args, int)));
+				ind++;
+				count++; }
+			else if (format[ind] == 's')
+			{	count += _puts(va_arg(args, char *));
+				ind++;
 			}
-		} i++;	}
-	va_end(list);
-	return (printed);
+			else if (format[ind] == 'd' || format[ind] == 'i')
+			{	count += _putint(va_arg(args, int));
+				ind++; }}
+		else
+		{	_putchar(format[ind]);
+			ind++;
+			count++; }}
+		va_end(args);
+	return (count);
 }
