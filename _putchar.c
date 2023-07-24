@@ -9,13 +9,5 @@
  */
 int _putchar(char c)
 {
-	if ((c >= 32 && c <= 126) || (c == '\n'))
-	{
-		return (write(1, &c, 1));
-	}
-	else
-	{
-		perror("Error, invalid Char");
-		return -1;
-	}
+	return (write(1, &c, 1));
 }
