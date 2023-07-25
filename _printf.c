@@ -21,14 +21,19 @@ int _printf(const char *format, ...)
 	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0'))
 	return (-1);
 	va_start(args, format);
-	while (format[ind] && format)
+	while (format[ind])
 	{
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
-			{	_putchar(37);
-				count++;
-				ind++;	}
+			{	if (format[ind + 1] == '%')
+				{ 	_putchar(37);
+					count++;
+					ind++; }	
+				else
+				{	_putchar(format[ind]);
+					count++;
+					ind++;	}}
 			else if (format[ind] == 'c')
 			{	_putchar((va_arg(args, int)));
 				ind++;
