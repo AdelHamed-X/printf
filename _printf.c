@@ -20,8 +20,8 @@ int _printf(const char *format, ...)
 	int j = 0;
 
 	main_struct all[] = {
-		{"%c", print_char}, {"%s", print_string}, {"%%", print_perc},
-		{"%i", print_int}, {"%d", print_int}};
+	{"%c", print_char}, {"%s", print_string}, {"%%", print_perc},
+	{"%i", print_int}, {"%d", print_int}};
 
 	va_start(list, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -36,12 +36,11 @@ int _printf(const char *format, ...)
 				{
 					count += all[j].f(list);
 					ind = ind + 2;
-
 				}
-			j++;	}
+			j++;    }
 		_putchar(format[ind]);
 		ind++;
 		count++; }
-	va_end(list);
+		va_end(list);
 	return (count);
 }

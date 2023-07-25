@@ -1,7 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-typedef struct format 
+/**
+ * struct format - a structure that maps a specifier
+ *
+ * @c: the conversion specifier character
+ * @f: a pointer to the function that handles the conversion specifier
+ */
+typedef struct format
 {
 	char *c;
 	int (*f)();
