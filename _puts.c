@@ -1,37 +1,27 @@
 #include "main.h"
 /**
- * _puts - Prints a string to the standard output (stdout).
- * @str: The string to be printed.
- *
- * Return: The number of characters printed.
+ * _puts - print a string.
+ * @s: argumen t.
+ * Return: the length of the string.
  */
 
-int _puts(char *str)
+int _puts(char *s)
 {
 	int i, len;
 
-	if (str == NULL)
+	if (s == NULL)
 	{
-		str = "(null)";
-		len = _strlen(str);
+		s = "(null)";
+		len = _strlen(s);
 		for (i = 0; i < len; i++)
-			_putchar(str[i]);
+			_putchar(s[i]);
 		return (len);
 	}
 	else
 	{
-		len = _strlen(str);
+		len = _strlen(s);
 		for (i = 0; i < len; i++)
-			_putchar(str[i]);
-		return (len);
-	}
-}
-	}
-	else
-	{
-		len = _strlen(str);
-		for (i = 0; i < len; i++)
-			_putchar(str[i]);
+			_putchar(s[i]);
 		return (len);
 	}
 }
