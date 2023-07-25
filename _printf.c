@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0' ))
 	return (-1);
 	va_start(args, format);
-	while (format[ind])
+	while (format[ind] && format)
 	{
 		if (format[ind] == '%')
 		{	ind++;
