@@ -25,8 +25,9 @@ int _printf(const char *format, ...)
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
-			{	count += _printpercent();
-				ind++;	}
+			{	_putchar(format[ind]);
+				ind++;
+				count++;	}
 			else if (format[ind] == 'c')
 			{	_putchar((va_arg(args, int)));
 				ind++;
@@ -36,9 +37,6 @@ int _printf(const char *format, ...)
 				ind++; }
 			else if (format[ind] == 'd' || format[ind] == 'i')
 			{	count += _putint(va_arg(args, int));
-				ind++; }
-			else
-			 {	count += _printpercent();
 				ind++; }}
 		else
 		{	_putchar(format[ind]);
