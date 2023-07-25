@@ -26,22 +26,28 @@ int _printf(const char *format, ...)
 	va_start(list, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-Here
 	while (format[ind] != '\0')
 	{
-		j = 5;
-			while (j >= 0 )
-			{
-				if (all[j].c[0] == format[ind] &&  all[j].c[1] == format[ind + 1])
-				{
-					count += all[j].f(list);
-					ind = ind + 2;
-					goto Here
-				}
-			j--;    }
+		int found = 0;
+	for (j = 0; j < 5; j++)
+	{	
+
+		if (all[j].c[0] == format[ind] && ((all[j].c[1] == '\0') || (all[j].c[1] == format[ind + 1])))
+		{
+ 			count += all[j].f(list);
+			found = 1;
+			if (all[j].c[1] == '\0')
+			ind++;
+			break;
+		}
+ 	}
+
+	if (!found)
+	{
 		_putchar(format[ind]);
-		ind++;
-		count++; }
+		count++;
+	}
+	ind++;}
 		va_end(list);
 	return (count);
 }
