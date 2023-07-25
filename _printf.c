@@ -27,33 +27,27 @@ int _printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(list, format);
-
+	if (format[ind] == '%' && format[ind + 1] == '\0')
+	{	count += print_perc();
+	}
 	while (format[ind])
 	{
 		j = 0;
 		if (format[ind] == '%')
-		{	if (format[ind + 1] == '\0')
-			{	count += print_perc();
-			} else
+		{
+			ind++;
+			while (j < 5)
 			{
-				ind++;
-				while (j < 5)
+				if (all[j].c == format[ind])
 				{
-					if (all[j].c == format[ind])
-					{
-						count += all[j].f(list);
-						ind++;
-					}
-					else
-					{
-						_putchar(format[ind]);
-						ind++;
-						count++; }
-					j++; }}
-			else
-			{	_putchar(format[ind]);
-				ind++;
-				count++; }}
+					count += all[j].f(list);
+					ind++;
+				}
+				j++; }}
+		else
+		{	_putchar(format[ind]);
+			ind++;
+			count++; }}
 	va_end(list);
 	return (count);
 }
