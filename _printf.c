@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 	if (format[ind] == '%' && format[ind + 1] == '\0')
 	{	count += print_perc();
 	}
-	while (format[ind])
+	while (format[ind] && format)
 	{
 		j = 0;
 		if (format[ind] == '%')
