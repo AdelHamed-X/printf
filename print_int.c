@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_int - Prints an integer to the standard output (stdout).
- * @n: The va_list that holds the integer argument.
+ * @list: The va_list that holds the integer argument.
  *
  * Return: The number of characters printed.
  */

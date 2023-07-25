@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * _puts - Prints a string to the standard output (stdout).
- * @str: The string to be printed.
+ * print_string - Prints a string to the standard output (stdout).
+ * @list: The string to be printed.
  *
  * Return: The number of characters printed.
  */

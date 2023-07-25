@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		{'i', print_int}, {'d', print_int}
 	};
 
-	if (!format[ind] || !format || (format[ind] == '%' && format[ind + 1] == '\0'))
+	if (!format[ind] || !format || format[ind] == '%' && format[ind + 1] == '\0')
 		return (-1);
 	va_start(list, format);
 
