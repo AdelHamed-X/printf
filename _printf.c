@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
-			{	_putchar(format[ind]);
+			{	_putchar(37);
 				ind++;
 				count++;	}
 			else if (format[ind] == 'c')
