@@ -11,7 +11,6 @@
  *
  * Return: Number of characters printed (success), -1 on error.
  *
- * Note: Simplified version for educational purposes.
  */
 int _printf(const char *format, ...)
 {	va_list args;
@@ -37,6 +36,9 @@ int _printf(const char *format, ...)
 				ind++; }
 			else if (format[ind] == 'd' || format[ind] == 'i')
 			{	count += _putint(va_arg(args, int));
+				ind++; }
+			else
+			 {	count += _printpercent();
 				ind++; }}
 		else
 		{	_putchar(format[ind]);
