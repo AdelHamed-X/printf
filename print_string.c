@@ -1,13 +1,16 @@
 #include "main.h"
 /**
- * _puts - print a string.
+ * print_string - print a string.
  * @s: argumen t.
  * Return: the length of the string.
  */
 
-int _puts(char *s)
+int print_string(va_list list)
 {
 	int i, len;
+	char *s;
+
+	s = va_arg(list, char *);
 
 	if (s == NULL)
 	{

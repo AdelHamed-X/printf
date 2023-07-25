@@ -1,5 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+typedef struct format 
+{
+	char c;
+	int (*f)();
+} main_struct;
+
+#include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stddef.h>
@@ -9,9 +17,10 @@ int _strlenc(const char *s);
 int _strlen(char *s);
 void _flush_buffer(char *buffer, size_t size);
 int _putchar(char);
-int _puts(char *);
+int print_string(va_list);
 int _printf(const char *format, ...);
-int _putint(int value);
-int _printpercent(void);
+int print_int(va_list);
+int print_perc(void);
+int print_char(va_list);
 
 #endif
