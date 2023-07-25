@@ -3,7 +3,7 @@
 
 typedef struct format 
 {
-	char c;
+	char *c;
 	int (*f)();
 } main_struct;
 

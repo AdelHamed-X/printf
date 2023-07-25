@@ -20,31 +20,28 @@ int _printf(const char *format, ...)
 	int j = 0;
 
 	main_struct all[] = {
-		{'c', print_char}, {'s', print_string}, {'%', print_perc},
-		{'i', print_int}, {'d', print_int}
-	};
+		{"%c", print_char}, {"%s", print_string}, {"%%", print_perc},
+		{"%i", print_int}, {"%d", print_int}};
 
-	if (!format[ind] || !format || (format[ind] == '%' && format[ind + 1] == '\0'))
-		return (-1);
 	va_start(list, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
 	while (format[ind] != '\0')
 	{
 		j = 0;
-		if (format[ind] == '%')
-		{	ind++;
 			while (j < 5)
 			{
-				if (all[j].c == format[ind])
+				if (all[j].c[0] == format[ind] &&  all[j].c[1] == format[ind + 1])
 				{
 					count += all[j].f(list);
-					ind++;
+					ind = ind + 2;
+
 				}
-				j++; }}
-		else
-		{	_putchar(format[ind]);
-			ind++;
-			count++; }}
+			j++;	}
+		_putchar(format[ind]);
+		ind++;
+		count++; }
 	va_end(list);
 	return (count);
 }
