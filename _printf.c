@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	va_start(list, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-
+Here
 	while (format[ind] != '\0')
 	{
 		j = 5;
@@ -36,6 +36,7 @@ int _printf(const char *format, ...)
 				{
 					count += all[j].f(list);
 					ind = ind + 2;
+					goto Here
 				}
 			j--;    }
 		_putchar(format[ind]);
