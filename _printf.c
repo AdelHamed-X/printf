@@ -11,6 +11,7 @@
  *
  * Return: Number of characters printed (success), -1 on error.
  *
+ * Note: Simplified version for educational purposes.
  */
 int _printf(const char *format, ...)
 {	va_list args;
@@ -20,14 +21,14 @@ int _printf(const char *format, ...)
 	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0'))
 	return (-1);
 	va_start(args, format);
-	while (format[ind])
+	while (format[ind] && format)
 	{
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
 			{	_putchar(37);
-				ind++;
-				count++;	}
+				count++;
+				ind++;	}
 			else if (format[ind] == 'c')
 			{	_putchar((va_arg(args, int)));
 				ind++;
