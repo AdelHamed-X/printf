@@ -12,5 +12,6 @@ int _putchar(char);
 int _puts(char *);
 int _printf(const char *format, ...);
 int _putint(int value);
+int _printpercent(void);
 
 #endif

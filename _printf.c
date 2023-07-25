@@ -26,8 +26,7 @@ int _printf(const char *format, ...)
 		if (format[ind] == '%')
 		{	ind++;
 			if (format[ind] == '%')
-			{	_putchar(format[ind]);
-				count++;
+			{	count += _printpercent();
 				ind++;	}
 			else if (format[ind] == 'c')
 			{	_putchar((va_arg(args, int)));
