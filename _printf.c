@@ -29,15 +29,15 @@ int _printf(const char *format, ...)
 
 	while (format[ind] != '\0')
 	{
-		j = 0;
-			while (j < 5)
+		j = 5;
+			while (j >= 0 )
 			{
 				if (all[j].c[0] == format[ind] &&  all[j].c[1] == format[ind + 1])
 				{
 					count += all[j].f(list);
 					ind = ind + 2;
 				}
-			j++;    }
+			j--;    }
 		_putchar(format[ind]);
 		ind++;
 		count++; }
