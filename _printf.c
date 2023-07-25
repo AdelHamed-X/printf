@@ -25,27 +25,40 @@ int _printf(const char *format, ...)
 	{
 		if (format[ind] == '%')
 		{	ind++;
-			if (format[ind] == '%')
-                        {       if (format[ind + 1] == '%')
-                                {       _putchar(37);
-                                        count++;
-                                        ind++; }
-                                else
-                                {       _putchar(format[ind]);
-                                        count++;
-                                        ind++;  }}
-			else if (format[ind] == 'c')
+		switch (format[ind])
+		{	case '%':
+			{
+				if (format[ind + 1] == '%')
+				{	_putchar(37);
+					count++;
+					ind++; }
+				else
+				{	_putchar(format[ind]);
+					count++;
+					ind++; }
+				break; }
+			case 'c':
 			{	_putchar((va_arg(args, int)));
 				ind++;
-				count++; }
-			else if (format[ind] == 's')
+				count++; 
+				break; }
+			case 's':
 			{	count += _puts(va_arg(args, char *));
-				ind++; }
-			else if (format[ind] == 'd' || format[ind] == 'i')
+				ind++; 
+				break; }
+			case 'i':
+			case 'd':
 			{	count += _putint(va_arg(args, int));
-				ind++; }}
+				ind++;
+				break; }
+			default :
+			{	_putchar(format[ind]);
+				ind++;
+				count++; 
+				break; }}}
 		else
-		{	_putchar(format[ind]);
+		{
+			_putchar(format[ind]);
 			ind++;
 			count++; }}
 		va_end(args);
