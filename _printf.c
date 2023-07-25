@@ -17,8 +17,7 @@ int _printf(const char *format, ...)
 {	va_list list;
 	int count = 0;
 	int ind = 0;
-	int j = 0;
-
+	
 	main_struct all[] = {
 	{"%c", print_char}, {"%s", print_string}, {"%%", print_perc},
 	{"%i", print_int}, {"%d", print_int}};
@@ -28,26 +27,31 @@ int _printf(const char *format, ...)
 		return (-1);
 	while (format[ind] != '\0')
 	{
-		int found = 0;
-	for (j = 0; j < 5; j++)
-	{	
-
-		if (all[j].c[0] == format[ind] && ((all[j].c[1] == '\0') || (all[j].c[1] == format[ind + 1])))
-		{
- 			count += all[j].f(list);
-			found = 1;
-			if (all[j].c[1] == '\0')
-			ind++;
-			break;
-		}
- 	}
-
-	if (!found)
-	{
-		_putchar(format[ind]);
-		count++;
-	}
-	ind++;}
-		va_end(list);
+		if (format[ind] == '%')
+		{	ind++;
+          		switch (format[ind])
+        		{
+            			case 'c':
+					count += all[0].f(list);
+                			break;
+            			case 's':
+                			count += all[1].f(list);
+                			break;
+            			case 'd':
+            			case 'i':
+                			count += all[3].f(list);
+                			break;
+				case '%':
+                                        count += all[2].f(list);
+                                        break;
+            			default:
+					count += _putchar(format[ind]);          
+                			break;}
+			ind++; }
+    		else
+    		{	_putchar(format[ind]);
+       			ind++;
+        		count++; }}
+	va_end(list);
 	return (count);
 }
