@@ -1,8 +1,9 @@
 #include "main.h"
 /**
- * printf_int - prints integer
- * @args: argument to print
- * Return: number of characters printed
+ * _putint - Prints an integer to the standard output (stdout).
+ * @n: The va_list that holds the integer argument.
+ *
+ * Return: The number of characters printed.
  */
 int _putint(int n)
 {

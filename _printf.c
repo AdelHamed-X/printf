@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	int count = 0;
 	int ind = 0;
 
-	if (format == NULL)
+	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0'))
 	return (-1);
 	va_start(args, format);
 	while (format[ind])

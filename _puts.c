@@ -1,24 +1,27 @@
 #include "main.h"
 /**
- * _puts - Prints a string to the standard output.
- * @str: Pointer to the string to be printed.
+ * _puts - Prints a string to the standard output (stdout).
+ * @str: The string to be printed.
  *
- * Description:
- * This function prints the characters of the given string to
- * the standard output until it reaches the null-terminator.
+ * Return: The number of characters printed.
  */
 int _puts(char *str)
 {
-	int i;
-	
-	if (str)
-	{	
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			_putchar(str[i]);
-		}
-		_putchar('\0');
-	}
+	int i, len;
 
-	return (i);
+	if (str == NULL)
+	{
+		str = "(null)";
+		len = _strlen(str);
+		for (i = 0; i < len; i++)
+			_putchar(str[i]);
+		return (len);
+	}
+	else
+	{
+		len = _strlen(str);
+		for (i = 0; i < len; i++)
+			_putchar(str[i]);
+		return (len);
+	}
 }
