@@ -24,26 +24,30 @@ int _printf(const char *format, ...)
 	while (format[ind])
 	{
 		if (format[ind] == '%')
-		{	ind++;
-			if (format[ind] == '%')
-			{	if (format[ind + 1] == '%')
-				{ 	_putchar(37);
-					count++;
-					ind++; }	
-				else
-				{	_putchar(format[ind]);
-					count++;
-					ind++;	}}
-			else if (format[ind] == 'c')
-			{	_putchar((va_arg(args, int)));
+		{
+			ind++;
+		switch (format[ind])
+		{	case '%':
+			{
+				if (format[ind] == '%')
+				{	count += _putchar(37);
+					ind++; }
+				break; } case 'c':
+			{	count += _putchar((va_arg(args, int)));
 				ind++;
-				count++; }
-			else if (format[ind] == 's')
+				break; }
+			case 's':
 			{	count += _puts(va_arg(args, char *));
-				ind++; }
-			else if (format[ind] == 'd' || format[ind] == 'i')
+				ind++;
+				break; }
+			case 'i':
+			case 'd':
 			{	count += _putint(va_arg(args, int));
-				ind++; }}
+				ind++;
+				break; } default:
+			{	count += _putchar(format[ind]);
+				ind++;
+				break; }}}
 		else
 		{	_putchar(format[ind]);
 			ind++;
