@@ -28,18 +28,19 @@ int _printf(const char *format, ...)
 	if (format[ind] == '%' && format[ind + 1] == '\0')
 	{	count += print_perc();
 	}
+	if (!format || !format[ind])
+	{	return (-1);
+	}
 Here:
 	while (format[ind] && format)
 	{
 		j = 0;
 		if (format[ind] == '%')
-		{
-			ind++;
+		{	ind++;
 			while (j < 5)
 			{
 				if (all[j].c == format[ind])
-				{
-					count += all[j].f(list);
+				{	count += all[j].f(list);
 					ind++;
 					goto Here;
 				}
@@ -47,8 +48,7 @@ Here:
 			_putchar(format[--ind]);
 			_putchar(format[++ind]);
 			count += 2;
-		}
-		else
+		} else
 		{	_putchar(format[ind]);
 			ind++;
 			count++; }}
