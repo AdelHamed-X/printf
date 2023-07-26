@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * _putint - Prints an integer to the standard output (stdout).
- * @n: The va_list that holds the integer argument.
+ * print_int - Prints an integer to the standard output (stdout).
+ * @list: The va_list that holds the integer argument.
  *
  * Return: The number of characters printed.
  */
-int _putint(int n)
+int print_int(va_list list)
 {
-	int num, last = n % 10, digit, exp = 1;
+	int n = va_arg(list, int), num, last = n % 10, digit, exp = 1;
 	int  i = 1;
 
 	n = n / 10;

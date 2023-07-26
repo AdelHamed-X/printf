@@ -14,42 +14,45 @@
  * Note: Simplified version for educational purposes.
  */
 int _printf(const char *format, ...)
-{	va_list args;
+{	va_list list;
 	int count = 0;
 	int ind = 0;
+	int j = 0;
 
-	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0'))
-	return (-1);
-	va_start(args, format);
-	while (format[ind])
+	main_struct all[] = {
+		{'c', print_char}, {'s', print_string}, {'%', print_perc},
+		{'i', print_int}, {'d', print_int}
+	};
+
+	if (!format)
+		return (-1);
+	va_start(list, format);
+	if (format[ind] == '%' && format[ind + 1] == '\0')
+	{	count += print_perc();
+	}
+Here:
+	while (format[ind] && format)
 	{
+		j = 0;
 		if (format[ind] == '%')
 		{
 			ind++;
-		switch (format[ind])
-		{	case '%':
+			while (j < 5)
 			{
-				if (format[ind] == '%')
-				{	count += _putchar(37);
-					ind++; }
-				break; } case 'c':
-			{	count += _putchar((va_arg(args, int)));
-				ind++;
-				break; } case 's':
-			{	count += _puts(va_arg(args, char *));
-				ind++;
-				break; } case 'i':
-			case 'd':
-			{	count += _putint(va_arg(args, int));
-				ind++;
-				break; } default:
-			{	count += _putchar(format[ind]);
-				ind++;
-				break; }}}
+				if (all[j].c == format[ind])
+				{
+					count += all[j].f(list);
+					ind++;
+					goto Here;
+				}
+				j++; }
+			_putchar(format[--ind]);
+			_putchar(format[++ind]);
+		}
 		else
 		{	_putchar(format[ind]);
 			ind++;
 			count++; }}
-		va_end(args);
+	va_end(list);
 	return (count);
 }
