@@ -24,8 +24,6 @@ int _printf(const char *format, ...)
 		{'i', print_int}, {'d', print_int}
 	};
 
-	if (!format)
-		return (-1);
 	va_start(list, format);
 	if (format[ind] == '%' && format[ind + 1] == '\0')
 	{	count += print_perc();
@@ -48,11 +46,12 @@ Here:
 				j++; }
 			_putchar(format[--ind]);
 			_putchar(format[++ind]);
+			count += 2;
 		}
 		else
 		{	_putchar(format[ind]);
 			ind++;
 			count++; }}
 	va_end(list);
-	return (count);
+	return (++count);
 }
