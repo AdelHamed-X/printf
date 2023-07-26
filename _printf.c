@@ -28,9 +28,6 @@ int _printf(const char *format, ...)
 	if (format[ind] == '%' && format[ind + 1] == '\0')
 	{	return (0);
 	}
-	if (!format || !format[ind])
-	{	return (-1);
-	}
 Here:
 	while (format[ind] && format)
 	{
@@ -47,6 +44,7 @@ Here:
 				j++; }
 			_putchar(format[--ind]);
 			_putchar(format[++ind]);
+			ind++;
 			count += 2;
 		} else
 		{	_putchar(format[ind]);
