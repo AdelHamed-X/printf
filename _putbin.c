@@ -6,9 +6,9 @@
  * Return: The number of characters printed.
  */
 int _putbin(va_list list)
-{  	int n = va_arg(list, int);
-	int div = n;
-	int bit[32];
+{  	long int n = va_arg(list, long int);
+	long int div = n;
+	long int bit[32];
 	int i = 0, j =0;
 
 	while (div > 0)
