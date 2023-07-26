@@ -43,7 +43,8 @@ int _printf(const char *format, ...)
 			{	count += _putint(va_arg(args, int));
 				ind++;
 				break; } default:
-			{	count += _putchar(format[ind]);
+			{	count += _putchar(format[--ind]);
+				count += _putchar(format[++ind]);
 				ind++;
 				break; }}}
 		else
