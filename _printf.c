@@ -25,11 +25,11 @@ int _printf(const char *format, ...)
 	};
 
 	va_start(list, format);
-	if (format[ind] == '%' && format[ind + 1] == '\0')
-	{	return (0);
+	if (format == NULL || (format[ind] == '%' && format[ind + 1] == '\0'))
+	{	return (-1);
 	}
 Here:
-	while (format[ind] && format)
+	while (format[ind])
 	{
 		j = 0;
 		if (format[ind] == '%')
