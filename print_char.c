@@ -14,5 +14,5 @@ int print_char(va_list list)
 
 	_putchar(c);
 	count++;
-	return (0);
+	return (count);
 }

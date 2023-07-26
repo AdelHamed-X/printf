@@ -53,5 +53,5 @@ Here:
 			ind++;
 			count++; }}
 	va_end(list);
-	return (++count);
+	return (count);
 }
