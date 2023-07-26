@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 	if (format[ind] == '%' && format[ind + 1] == '\0')
-	{	count += print_perc();
+	{	return (0);
 	}
 	if (!format || !format[ind])
 	{	return (-1);
