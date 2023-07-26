@@ -35,12 +35,10 @@ int _printf(const char *format, ...)
 				break; } case 'c':
 			{	count += _putchar((va_arg(args, int)));
 				ind++;
-				break; }
-			case 's':
+				break; } case 's':
 			{	count += _puts(va_arg(args, char *));
 				ind++;
-				break; }
-			case 'i':
+				break; } case 'i':
 			case 'd':
 			{	count += _putint(va_arg(args, int));
 				ind++;
