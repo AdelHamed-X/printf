@@ -18,6 +18,7 @@ typedef struct format
 #include <unistd.h>
 #include <stddef.h>
 #include <string.h>
+#include <limits.h>
 
 int _strlenc(const char *s);
 int _strlen(char *s);
