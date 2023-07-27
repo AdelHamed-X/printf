@@ -1,28 +1,33 @@
 #include "main.h"
+
 /**
- * _putbin - Prints a binary to the standard output (stdout).
- * @list: The va_list that holds the integer argument.
- *
- * Return: The number of characters printed.
+ * _putbin - prints a binary number.
+ * @list: arguments.
+ * Return: 1.
  */
 int _putbin(va_list list)
-{	long int n = va_arg(list, long int);
-	long int div = n;
-	long int bit[32];
-	int i = 0, j = 0;
+{
+	int cont = 0;
+	int i, a = 1, b;
+	unsigned int num = va_arg(val, unsigned int);
+	unsigned int p;
 
-	while (div > 0)
-	{	bit[i] = div % 2;
-		div = div / 2;
-		i++;
-	}
-	if (i == 0)
+	for (i = 0; i < 32; i++)
 	{
+		p = ((a << (31 - i)) & num);
+		if (p >> (31 - i))
+			flag = 1;
+		if (flag)
+		{
+			b = p >> (31 - i);
+			_putchar(b + 48);
+			cont++;
+		}
+	}
+	if (cont == 0)
+	{
+		cont++;
 		_putchar('0');
-		return (1);
 	}
-	for (j = i - 1; j >= 0; j--)
-	{ _putchar(bit[j] + '0');
-	}
-	return (i);
+	return (cont);
 }
