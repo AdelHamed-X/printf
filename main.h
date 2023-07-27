@@ -19,6 +19,7 @@ typedef struct format
 #include <stddef.h>
 #include <string.h>
 #include <limits.h>
+#include <stdlib.h>
 
 int _strlenc(const char *s);
 int _strlen(char *s);
@@ -30,5 +31,6 @@ int print_int(va_list);
 int print_perc(void);
 int print_char(va_list);
 int _putbin(va_list list);
+int print_unsign(va_list list);
 
 #endif
