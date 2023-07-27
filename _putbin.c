@@ -6,26 +6,23 @@
  * Return: The number of characters printed.
  */
 int _putbin(va_list list)
-{  	long int n = va_arg(list, long int);
+{	long int n = va_arg(list, long int);
 	long int div = n;
-	int i = 0, j =0;
-	
-	char *bit = (char *)malloc(32);
+	long int bit[32];
+	int i = 0, j = 0;
 
 	while (div > 0)
 	{	bit[i] = div % 2;
 		div = div / 2;
 		i++;
 	}
-	 if (i == 0)
+	if (i == 0)
 	{
 		_putchar('0');
-        	return 1;
+		return (1);
 	}
 	for (j = i - 1; j >= 0; j--)
 	{ _putchar(bit[j] + '0');
 	}
-	free(bit);
-	return(i);
+	return (i);
 }
-	      		
