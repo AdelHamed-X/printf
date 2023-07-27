@@ -8,8 +8,9 @@
 int _putbin(va_list list)
 {
 	int cont = 0;
+	int flag = 0;
 	int i, a = 1, b;
-	unsigned int num = va_arg(val, unsigned int);
+	unsigned int num = va_arg(list, unsigned int);
 	unsigned int p;
 
 	for (i = 0; i < 32; i++)
