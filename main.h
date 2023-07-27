@@ -19,6 +19,7 @@ typedef struct format
 #include <stddef.h>
 #include <string.h>
 #include <limits.h>
+#include <stdlib.h>
 
 int _strlenc(const char *s);
 int _strlen(char *s);

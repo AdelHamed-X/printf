@@ -8,8 +8,9 @@
 int _putbin(va_list list)
 {  	long int n = va_arg(list, long int);
 	long int div = n;
-	long int bit[32];
 	int i = 0, j =0;
+	
+	char *bit = (char *)malloc(32);
 
 	while (div > 0)
 	{	bit[i] = div % 2;
@@ -24,6 +25,7 @@ int _putbin(va_list list)
 	for (j = i - 1; j >= 0; j--)
 	{ _putchar(bit[j] + '0');
 	}
+	free(bit);
 	return(i);
 }
 	      		
