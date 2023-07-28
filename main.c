@@ -11,12 +11,10 @@ int main(void)
 {
     int len;
     int len2;
-    int ui;
 
-     ui = 1024;
 
-    len = _printf("Unsigned:[%o]\n", ui);
-   len2 = printf("Unsigned:[%o]\n", ui);
+    len = _printf("Unsigned:[%o]\n", UINT_MAX);
+   len2 = printf("Unsigned:[%o]\n", UINT_MAX);
 
     printf("%i, %i\n", len, len2);
     return 0;
