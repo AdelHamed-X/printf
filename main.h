@@ -32,5 +32,6 @@ int print_perc(void);
 int print_char(va_list);
 int _putbin(va_list list);
 int print_unsign(va_list list);
+int print_octal(va_list list);
 
 #endif
