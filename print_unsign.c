@@ -8,7 +8,7 @@
 int print_unsign(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
-	int rev[32], count = 0, i = 0;
+	int j, rev[32], count = 0, i = 0;
 
 	while (num > 0)
 	{
@@ -23,11 +23,9 @@ int print_unsign(va_list list)
 	}
 	else
 	{
-		i--;
-		while (i >= 0)
+		for (j = i - 1; j >= 0; j--)
 		{
-			_putchar(rev[i]);
-			i--;
+			_putchar(rev[j] + '0');
 			count++;
 		}
 	}
