@@ -18,6 +18,7 @@ int print_octal(va_list list)
 		num /= 8;
 	}
 
+
 	if (i == 0)
 	{
 		_putchar('0');
@@ -25,11 +26,19 @@ int print_octal(va_list list)
 	}
 	else
 	{
-		for (j = i - 1; j != 0; j--)
+		
+		for (j = i - 1; j != 0;)
 		{
+			
 			_putchar(rev[j] + '0');
 			count++;
-		}
+
+			j--;
+			}
+
+		_putchar(rev[i] + '0');
+		count++;
+		
 	}
 
 	return (count);
