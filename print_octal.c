@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * print_octal - prints integer
- * @args: argument to print
+ * print_octal - prints an octal number.
+ * @list: argument to print
  * Return: number of characters printed
  */
 int print_octal(va_list list)
@@ -11,34 +11,28 @@ int print_octal(va_list list)
 	int j, rev[32], count = 0, i = 0;
 	int quotient = num;
 
-	for (i = 0; num != 0; i++)
+	while (num != 0)
+	{	num /= 10;
+		count++;
+	}
+	for (i = 0; i < count; i++)
 	{
 		rev[i] = quotient % 8;
-		quotient = num / 8;
-		num /= 8;
+		quotient /= 8;
 	}
 
 
-	if (i == 0)
+	if (count == 0)
 	{
 		_putchar('0');
 		count++;
 	}
 	else
 	{
-		
-		for (j = i - 1; j != 0;)
+		for (j = count - 1 ; j >= 0; j--)
 		{
-			
 			_putchar(rev[j] + '0');
-			count++;
-
-			j--;
-			}
-
-		_putchar(rev[i] + '0');
-		count++;
-		
+		}
 	}
 
 	return (count);

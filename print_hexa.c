@@ -2,7 +2,7 @@
 
 /**
  * print_hexa - prints integer
- * @args: argument to print
+ * @list: argument to print
  * Return: number of characters printed
  */
 int print_hexa(va_list list)
@@ -12,7 +12,7 @@ int print_hexa(va_list list)
 	char hexDigits[] = "0123456789ABCDEF";
 
 	while (num != 0)
-	{	
+	{
 		rev[count] = hexDigits[num % 16];
 		count++;
 		num /= 16;
@@ -26,7 +26,7 @@ int print_hexa(va_list list)
 	}
 	else
 	{
-		for(j = count - 1;j >= 0;j--)
+		for (j = count - 1; j >= 0; j--)
 		{
 			_putchar(rev[j]);
 		}
