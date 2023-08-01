@@ -33,7 +33,7 @@ int print_char(va_list);
 int _putbin(va_list list);
 int print_unsign(va_list list);
 int print_octal(va_list list);
-void _printhex(int n)
+void _printhex(int n);
 int print_hexa(va_list list);
 
 

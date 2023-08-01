@@ -8,7 +8,7 @@ void _printhex(int n)
 {
  
 
-	if(n > 9)
+	if(n > 9 || n < 15)
 	{	_putchar(n + 'A');
 	}
 	else 
