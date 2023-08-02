@@ -9,7 +9,7 @@ int print_octal(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
 	int j, rev[32], count = 0, i = 0;
-	int quotient = num;
+	int quotient = (num < 0) ? -num : num;
 
 	while (num != 0)
 	{	num /= 10;
