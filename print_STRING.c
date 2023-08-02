@@ -27,7 +27,7 @@ int print_STRING(va_list list)
 	else
 	{
 		len = _strlen(s);
-		for (i = 0; i < len; i++)
+		for (i = 0; s[i] != '\0'; i++)
 		{	
 			if ((s[i] > 0 && s[i] < 32) || s[i] >= 127)
 			{
@@ -36,6 +36,7 @@ int print_STRING(va_list list)
 				_putchar('x');
 				_putchar(hexDigits[(asciiValue >> 4) & 0xF]);
 				_putchar(hexDigits[asciiValue & 0xF]);
+				len = len + 3;
 			}
 			else
 			{
