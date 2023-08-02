@@ -7,7 +7,7 @@
  */
 int print_octal(va_list list)
 {
-	int num = va_arg(list, int);
+	unsigned int num = va_arg(list, unsigned int);
 	int j, rev[32], count = 0, i = 0;
 	unsigned int quotient = num;
 
