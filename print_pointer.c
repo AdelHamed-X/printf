@@ -25,7 +25,8 @@ int print_pointer(va_list list)
 		write(1, "(nil)", 5);
 		return (0);
 	}
-
+	
+	write(1, "0x", 2);
 	for (j = count - 1; j >= 0; j--)
 	{
 		_putchar(rev[j]);

@@ -7,7 +7,7 @@
  */
 int print_octal(va_list list)
 {
-	unsigned int num = va_arg(list, unsigned int);
+	int num = va_arg(list, int);
 	int j, rev[32], count = 0, i = 0;
 	int quotient = (num < 0) ? -num : num;
 
@@ -20,7 +20,6 @@ int print_octal(va_list list)
 		rev[i] = quotient % 8;
 		quotient /= 8;
 	}
-
 
 	if (count == 0)
 	{
