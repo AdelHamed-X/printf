@@ -22,15 +22,14 @@ int print_pointer(va_list list)
 
 	if (count == 0)
 	{
-		write(1, "(nil)", 5);
-		return (0);
+		return (write(1, "(nil)", 5));
 	}
-	
+
 	write(1, "0x", 2);
 	for (j = count - 1; j >= 0; j--)
 	{
 		_putchar(rev[j]);
 	}
 
-	return (count);
+	return (count + 2);
 }
