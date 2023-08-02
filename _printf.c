@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 	main_struct all[] = {
 		{'c', print_char}, {'s', print_string}, {'%', print_perc},
 		{'i', print_int}, {'d', print_int},  {'b', _putbin}, {'u', print_unsign},
-		{'o', print_octal}, {'x', print_hexasmall}, {'X', print_hexalarge}
+		{'o', print_octal}, {'x', print_hexasmall}, {'X', print_hexalarge},
+		{'p', print_pointer}
 	};
 
 	va_start(list, format);
@@ -35,7 +36,7 @@ Here:
 		j = 0;
 		if (format[ind] == '%')
 		{	ind++;
-			while (j < 10)
+				while (j < 11)
 			{
 				if (all[j].c == format[ind])
 				{	count += all[j].f(list);
