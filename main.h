@@ -34,7 +34,7 @@ int _putbin(va_list list);
 int print_unsign(va_list list);
 int print_octal(va_list list);
 void _printhex(int n);
-int print_hexa(va_list list);
-
+int print_hexasmall(va_list list);
+int print_hexalarge(va_list list);
 
 #endif
