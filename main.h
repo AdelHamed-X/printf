@@ -37,5 +37,7 @@ void _printhex(int n);
 int print_hexasmall(va_list list);
 int print_hexalarge(va_list list);
 int print_pointer(va_list list);
+int print_STRING(va_list list);
+
 
 #endif
